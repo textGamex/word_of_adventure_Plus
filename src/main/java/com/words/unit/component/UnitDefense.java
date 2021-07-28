@@ -20,11 +20,23 @@ public class UnitDefense
     /**护甲*/
     private int armor;
     /**闪避*/
-    private int evade;
+    private int miss;
     /**每回合生命回复*/
     private int lifeRegeneration;
     /**暴击抗性 */
     private int critResistance;
+
+    private UnitDefense(Builder builder)
+    {
+        maxHp = builder.maxHp;
+        hp = maxHp;
+        physicalResistance = builder.physicalResistance;
+        magicResistance = builder.magicResistance;
+        armor = builder.armor;
+        miss = builder.miss;
+        lifeRegeneration = builder.lifeRegeneration;
+        critResistance = builder.critResistance;
+    }
 
     /**
      * @return 返回单位的最大生命值
@@ -81,15 +93,15 @@ public class UnitDefense
     /**
      * @return 返回单位的闪避
      */
-    public int getEvade()
+    public int getMiss()
     {
-        return evade;
+        return miss;
     }
 
 
-    public void setEvade(final int evade)
+    public void setMiss(final int miss)
     {
-        this.evade = evade;
+        this.miss = miss;
     }
 
     /**
@@ -135,8 +147,6 @@ public class UnitDefense
     {
         /**最大生命值*/
         private int maxHp;
-        /**生命值*/
-        private int hp;
         /**物理抗性*/
         private double physicalResistance;
         /**魔法抗性*/
@@ -144,11 +154,58 @@ public class UnitDefense
         /**护甲*/
         private int armor;
         /**闪避*/
-        private int evade;
+        private int miss;
         /**每回合生命回复*/
         private int lifeRegeneration;
         /**暴击抗性 */
         private int critResistance;
+
+        public Builder maxHp(int maxHp)
+        {
+            this.maxHp = maxHp;
+            return this;
+        }
+
+        public Builder physicalResistance(double physicalResistance)
+        {
+            this.physicalResistance = physicalResistance;
+            return this;
+        }
+
+        public Builder magicResistance(double magicResistance)
+        {
+            this.magicResistance = magicResistance;
+            return this;
+        }
+
+        public Builder armor(int armor)
+        {
+            this.armor = armor;
+            return this;
+        }
+
+        public Builder miss(int miss)
+        {
+            this.miss = miss;
+            return this;
+        }
+
+        public Builder lifeRegeneration(int lifeRegeneration)
+        {
+            this.lifeRegeneration = lifeRegeneration;
+            return this;
+        }
+
+        public Builder critResistance(int critResistance)
+        {
+            this.critResistance = critResistance;
+            return this;
+        }
+
+        public UnitDefense build()
+        {
+            return new UnitDefense(this);
+        }
     }
 
     @Override
@@ -160,7 +217,7 @@ public class UnitDefense
                 ", physicalResistance=" + physicalResistance +
                 ", magicResistance=" + magicResistance +
                 ", armor=" + armor +
-                ", evade=" + evade +
+                ", miss=" + miss +
                 ", lifeRegeneration=" + lifeRegeneration +
                 ", critResistance=" + critResistance +
                 '}';

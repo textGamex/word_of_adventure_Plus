@@ -26,7 +26,7 @@ public class UnitAttack
     /**每回合法力值恢复*/
     private int manaRecovery;
 
-    public UnitAttack(Builder builder)
+    private UnitAttack(Builder builder)
     {
         physicalAttack = builder.physicalAttack;
         magicAttack = builder.magicAttack;
