@@ -1,16 +1,19 @@
 package com.words.unit;
 
+import com.words.calculation.CalculationTools;
 import com.words.unit.component.UnitAttack;
 import com.words.unit.component.UnitDefense;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.Arrays;
-
 /**
+ * 游戏的单位.
+ *
  * @author 留恋千年
  * @version 1.0.0
  * @since 2021-7-27
+ * @see UnitAttack
+ * @see UnitDefense
  */
 public class Unit
 {
