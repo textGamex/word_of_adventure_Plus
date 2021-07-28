@@ -146,62 +146,70 @@ public class UnitDefense
     public static class Builder
     {
         /**最大生命值*/
-        private int maxHp;
+        private int maxHp                 = 100;
         /**物理抗性*/
-        private double physicalResistance;
+        private double physicalResistance = 0;
         /**魔法抗性*/
-        private double magicResistance;
+        private double magicResistance    = 0;
         /**护甲*/
-        private int armor;
+        private int armor                 = 0;
         /**闪避*/
-        private int miss;
+        private int miss                  = 0;
         /**每回合生命回复*/
-        private int lifeRegeneration;
+        private int lifeRegeneration      = 0;
         /**暴击抗性 */
-        private int critResistance;
+        private int critResistance        = 0;
 
+        /**最大生命值*/
         public Builder maxHp(int maxHp)
         {
             this.maxHp = maxHp;
             return this;
         }
 
+        /**物理抗性*/
         public Builder physicalResistance(double physicalResistance)
         {
             this.physicalResistance = physicalResistance;
             return this;
         }
 
+        /**魔法抗性*/
         public Builder magicResistance(double magicResistance)
         {
             this.magicResistance = magicResistance;
             return this;
         }
 
+        /**护甲*/
         public Builder armor(int armor)
         {
             this.armor = armor;
             return this;
         }
 
+        /**闪避*/
         public Builder miss(int miss)
         {
             this.miss = miss;
             return this;
         }
 
+        /**每回合生命回复*/
         public Builder lifeRegeneration(int lifeRegeneration)
         {
             this.lifeRegeneration = lifeRegeneration;
             return this;
         }
 
+        /**暴击抗性*/
         public Builder critResistance(int critResistance)
         {
             this.critResistance = critResistance;
             return this;
         }
 
+        /**构建*/
         public UnitDefense build()
         {
             return new UnitDefense(this);
