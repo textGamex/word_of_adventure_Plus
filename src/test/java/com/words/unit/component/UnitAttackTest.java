@@ -46,4 +46,16 @@ class UnitAttackTest
         assertEquals(6, object.getCritsEffect());
         assertEquals(7, object.getManaRecovery());
     }
+
+    @Test
+    void testToString()
+    {
+        var object =  new UnitAttack.Builder().magicAttack(0).mana(1).maxMana(2).crit(3).hit(4).critsEffect(5)
+                .manaRecovery(6).physicalAttack(7).build();
+
+        var result = "UnitAttack{physicalAttack=7, magicAttack=0, crit=3, critsEffect=5.0, hit=4, maxMana=2, mana=1" +
+                ", manaRecovery=6}";
+
+        assertEquals(result, object.toString());
+    }
 }

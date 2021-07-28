@@ -46,4 +46,16 @@ class UnitDefenseTest
         assertEquals(7, object.getMiss());
         assertEquals(8, object.getMagicResistance());
     }
+
+    @Test
+    void testToString()
+    {
+        var object = new UnitDefense.Builder().armor(0).critResistance(1).magicResistance(2).
+                lifeRegeneration(3).maxHp(4).miss(5).physicalResistance(6).build();
+
+        var result = "UnitDefense{maxHp=4, hp=4, physicalResistance=6.0, magicResistance=2.0, armor=0, miss=5" +
+                ", lifeRegeneration=3, critResistance=1}";
+
+        assertEquals(result, object.toString());
+    }
 }
