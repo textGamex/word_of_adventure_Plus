@@ -1,6 +1,6 @@
 package com.words.unit;
 
-import com.words.calculation.CalculationTools;
+import com.calculation.tools.CalculationTools;
 import com.words.unit.component.UnitAttack;
 import com.words.unit.component.UnitDefense;
 
@@ -17,6 +17,9 @@ import static java.util.Objects.requireNonNull;
  */
 public class Unit
 {
+    public static void main(String[] args)
+    {
+    }
     private UnitAttack attack;
     private UnitDefense defense;
 

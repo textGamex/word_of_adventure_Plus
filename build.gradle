@@ -1,5 +1,10 @@
+
 plugins {
     id 'java'
+}
+configurations {
+    antContrib
+
 }
 
 group 'org.example'
@@ -13,6 +18,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.0-M1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.0-M1'
     implementation 'com.alibaba:fastjson:1.2.76'
+    implementation fileTree(dir:'src/main/resources', includes: ['*.jar'])
 }
 
 test {
