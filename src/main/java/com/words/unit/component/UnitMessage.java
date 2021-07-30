@@ -1,5 +1,7 @@
 package com.words.unit.component;
 
+import org.slf4j.LoggerFactory;
+
 import static java.util.Objects.requireNonNull;
 
 /**
@@ -11,6 +13,7 @@ import static java.util.Objects.requireNonNull;
  */
 public class UnitMessage
 {
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(UnitMessage.class);
     /**
      * 单位所属阵营.
      *
@@ -41,6 +44,8 @@ public class UnitMessage
     private int xp;
     /**升到下一级所需经验*/
     private int upgradeNeedXp;
+    /**升到下一级所需经验增长*/
+    private double upgradeNeedXpIncrease;
 
     private UnitMessage(Builder builder)
     {
@@ -52,6 +57,7 @@ public class UnitMessage
         cash = builder.cash;
         xp = builder.xp;
         upgradeNeedXp = builder.upgradeNeedXp;
+        upgradeNeedXpIncrease = builder.upgradeNeedXpIncrease;
     }
 
     /**
@@ -62,21 +68,23 @@ public class UnitMessage
     public static class Builder
     {
         /**名称*/
-        private String name       = "NONE";
+        private String name                  = "NONE";
         /**身份*/
-        private Camp camp         = Camp.ENEMY;
+        private Camp camp                    = Camp.ENEMY;
         /**等级*/
-        private int level         = 0;
+        private int level                    = 0;
         /**速度*/
-        private int speed         = 0;
+        private int speed                    = 0;
         /**分数*/
-        private int value         = 0;
+        private int value                    = 0;
         /**货币*/
-        private int cash          = 0;
+        private int cash                     = 0;
         /**经验*/
-        private int xp            = 0;
+        private int xp                       = 0;
         /**升到下一级所需经验*/
-        private int upgradeNeedXp = 0;
+        private int upgradeNeedXp            = 0;
+        /**升到下一级所需经验增长*/
+        private double upgradeNeedXpIncrease = 0.05;
 
         /**
          * @param name 单位名称
@@ -136,9 +144,120 @@ public class UnitMessage
             return this;
         }
 
+        public Builder upgradeNeedXpIncrease(double upgradeNeedXpIncrease)
+        {
+            this.upgradeNeedXpIncrease = upgradeNeedXpIncrease;
+            return this;
+        }
+
         public UnitMessage build()
         {
             return new UnitMessage(this);
         }
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public Camp getCamp()
+    {
+        return camp;
+    }
+
+    public void setCamp(Camp camp)
+    {
+        this.camp = camp;
+    }
+
+    public int getLevel()
+    {
+        return level;
+    }
+
+    public void setLevel(int level)
+    {
+        this.level = level;
+    }
+
+    public int getSpeed()
+    {
+        return speed;
+    }
+
+    public void setSpeed(int speed)
+    {
+        this.speed = speed;
+    }
+
+    public int getValue()
+    {
+        return value;
+    }
+
+    public void setValue(int value)
+    {
+        this.value = value;
+    }
+
+    public int getCash()
+    {
+        return cash;
+    }
+
+    public void setCash(int cash)
+    {
+        this.cash = cash;
+    }
+
+    public int getXp()
+    {
+        return xp;
+    }
+
+    public void setXp(int xp)
+    {
+        this.xp = xp;
+    }
+
+    public int getUpgradeNeedXp()
+    {
+        return upgradeNeedXp;
+    }
+
+    public void setUpgradeNeedXp(int upgradeNeedXp)
+    {
+        this.upgradeNeedXp = upgradeNeedXp;
+    }
+
+    public double getUpgradeNeedXpIncrease()
+    {
+        return upgradeNeedXpIncrease;
+    }
+
+    public void setUpgradeNeedXpIncrease(double upgradeNeedXpIncrease)
+    {
+        this.upgradeNeedXpIncrease = upgradeNeedXpIncrease;
+    }
+
+    public int addXp(int xp)
+    {
+
+        var count = 0;
+        this.xp += xp;
+        while (this.xp >= upgradeNeedXp)
+        {
+            count++;
+            level++;
+            upgradeNeedXp += upgradeNeedXp * upgradeNeedXpIncrease;
+            LOGGER.trace("第{}次迭代, 现在等级为{}, 升级下一级所需为{}", count, level, upgradeNeedXp);
+        }
+        return count;
     }
 }

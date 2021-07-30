@@ -2,6 +2,7 @@ package com.words.unit;
 
 import com.words.unit.component.UnitAttack;
 import com.words.unit.component.UnitDefense;
+import com.words.unit.component.UnitMessage;
 import com.words.unit.component.buff.BuffModule;
 
 import static java.util.Objects.requireNonNull;
@@ -10,13 +11,17 @@ import static java.util.Objects.requireNonNull;
  * 游戏的单位.
  *
  * @author 留恋千年
- * @version 1.1.0
+ * @version 1.2.0
  * @since 2021-7-27
  * @see UnitAttack
  * @see UnitDefense
+ * @see UnitMessage
+ * @see BuffModule
  */
 public class Unit
 {
+    /**基础信息组件*/
+    private UnitMessage message;
     /**攻击组件*/
     private final UnitAttack attack;
     /**防御组件*/
@@ -28,12 +33,19 @@ public class Unit
     {
         attack = builder.attack;
         defense = builder.defense;
+        message = builder.message;
     }
 
+    /**
+     * @author 留恋千年
+     * @version 1.0.0
+     * @since 2021-7-29
+     */
     public static class Builder
     {
         private UnitAttack attack = new UnitAttack.Builder().build();
         private UnitDefense defense = new UnitDefense.Builder().build();
+        private UnitMessage message = new UnitMessage.Builder().build();
 
         public Builder attack(UnitAttack attack)
         {
@@ -47,10 +59,21 @@ public class Unit
             return this;
         }
 
+        public Builder message(UnitMessage message)
+        {
+            this.message = requireNonNull(message);
+            return this;
+        }
+
         public Unit build()
         {
             return new Unit(this);
         }
+    }
+
+    public UnitMessage message()
+    {
+        return message;
     }
 
     public UnitAttack attack()
