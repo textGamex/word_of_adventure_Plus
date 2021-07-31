@@ -3,7 +3,7 @@ package com.words.unit;
 import com.words.unit.component.UnitAttack;
 import com.words.unit.component.UnitDefense;
 import com.words.unit.component.UnitMessage;
-import com.words.unit.component.buff.BuffModule;
+import com.words.unit.component.buff.UnitBuff;
 
 import static java.util.Objects.requireNonNull;
 
@@ -16,7 +16,7 @@ import static java.util.Objects.requireNonNull;
  * @see UnitAttack
  * @see UnitDefense
  * @see UnitMessage
- * @see BuffModule
+ * @see UnitBuff
  */
 public class Unit
 {
@@ -27,7 +27,7 @@ public class Unit
     /**防御组件*/
     private final UnitDefense defense;
     /**buff组件*/
-    private final BuffModule buff = new BuffModule();
+    private final UnitBuff buff = new UnitBuff();
 
     private Unit(Builder builder)
     {
@@ -86,7 +86,7 @@ public class Unit
         return defense;
     }
 
-    public BuffModule buff()
+    public UnitBuff buff()
     {
         return buff;
     }

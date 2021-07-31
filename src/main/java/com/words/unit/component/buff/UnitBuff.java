@@ -16,7 +16,7 @@ import static java.util.Objects.requireNonNull;
  * @since 15
  * @author 留恋千年
  */
-public class BuffModule implements Serializable
+public class UnitBuff implements Serializable
 {
     @Serial
     private static final long serialVersionUID = 6182039129119023911L;
@@ -212,7 +212,7 @@ public class BuffModule implements Serializable
         {
             return false;
         }
-        BuffModule that = (BuffModule) o;
+        UnitBuff that = (UnitBuff) o;
         return haveBuffs.equals(that.haveBuffs);
     }
 

@@ -14,7 +14,7 @@ import java.util.Objects;
  *     <li>是否是Debuff</li>
  *     <li>是否是被动</li>
  * </em>
- * @see BuffModule
+ * @see UnitBuff
  * @see BuffType
  * @version 1.3.5
  * @since 15

@@ -248,14 +248,19 @@ public class UnitMessage
 
     public int addXp(int xp)
     {
-
         var count = 0;
         this.xp += xp;
         while (this.xp >= upgradeNeedXp)
         {
+            var copy = upgradeNeedXp;
             count++;
             level++;
             upgradeNeedXp += upgradeNeedXp * upgradeNeedXpIncrease;
+            if (upgradeNeedXp == copy)
+            {
+                throw new IllegalCallerException("upgradeNeedXp:" + upgradeNeedXp + ", upgradeNeedXpIncrease:"
+                        + upgradeNeedXpIncrease);
+            }
             LOGGER.trace("第{}次迭代, 现在等级为{}, 升级下一级所需为{}", count, level, upgradeNeedXp);
         }
         return count;

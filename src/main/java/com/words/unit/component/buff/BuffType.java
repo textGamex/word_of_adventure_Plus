@@ -3,7 +3,7 @@ package com.words.unit.component.buff;
 import java.io.Serializable;
 
 /**
- * 用于辅助实现{@link BuffModule}类的枚举类.
+ * 用于辅助实现{@link UnitBuff}类的枚举类.
  *
  * <p>现在实现的负面效果</p>
  * <em>
@@ -26,7 +26,7 @@ import java.io.Serializable;
  * @author 留恋千年
  * @version 1.1.0
  * @since 15
- * @see BuffModule
+ * @see UnitBuff
  */
 public enum BuffType implements Serializable
 {

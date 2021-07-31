@@ -14,6 +14,8 @@ public class PathTools
     {}
 
     /**
+     * 获得用户运行目录.
+     *
      * @return 程序运行时目录
      */
     public static String getRuntimeDirectory()

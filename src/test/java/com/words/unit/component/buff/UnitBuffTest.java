@@ -5,14 +5,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BuffModuleTest
+class UnitBuffTest
 {
-    private static BuffModule buffs;
+    private static UnitBuff buffs;
 
     @BeforeEach
     void setUp()
     {
-        buffs = new BuffModule();
+        buffs = new UnitBuff();
     }
 
     @Test
@@ -142,7 +142,7 @@ class BuffModuleTest
     @Test
     void testEqual()
     {
-        final var copy = new BuffModule();
+        final var copy = new UnitBuff();
 
         assertEquals(buffs, buffs);
         assertEquals(buffs, copy);
