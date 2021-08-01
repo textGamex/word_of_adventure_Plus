@@ -5,6 +5,8 @@ import com.words.unit.component.UnitDefense;
 import com.words.unit.component.UnitMessage;
 import com.words.unit.component.buff.UnitBuff;
 
+import java.util.Objects;
+
 import static java.util.Objects.requireNonNull;
 
 /**
@@ -20,6 +22,11 @@ import static java.util.Objects.requireNonNull;
  */
 public class Unit
 {
+    public static void main(String[] args)
+    {
+        var object = new Unit.Builder().build();
+        System.out.println("object = " + object);
+    }
     /**基础信息组件*/
     private UnitMessage message;
     /**攻击组件*/
@@ -89,5 +96,42 @@ public class Unit
     public UnitBuff buff()
     {
         return buff;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Unit{" +
+                "message=" + message +
+                ", attack=" + attack +
+                ", defense=" + defense +
+                ", buff=" + buff +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o)
+        {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass())
+        {
+            return false;
+        }
+        Unit unit = (Unit) o;
+        return message.equals(unit.message) && attack.equals(unit.attack) && defense.equals(unit.defense)
+                && buff.equals(unit.buff);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = message.hashCode();
+        result = 31 * result + attack.hashCode();
+        result = 31 * result + defense.hashCode();
+        result = 31 * result + buff.hashCode();
+        return result;
     }
 }

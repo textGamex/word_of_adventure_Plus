@@ -1,5 +1,7 @@
 package com.words.unit.component;
 
+import java.util.Objects;
+
 /**
  * 单位的防御组件.
  *
@@ -229,5 +231,40 @@ public class UnitDefense
                 ", lifeRegeneration=" + lifeRegeneration +
                 ", critResistance=" + critResistance +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o)
+        {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass())
+        {
+            return false;
+        }
+        UnitDefense that = (UnitDefense) o;
+        return maxHp == that.maxHp && hp == that.hp && Double.compare(that.physicalResistance, physicalResistance) == 0
+                && Double.compare(that.magicResistance, magicResistance) == 0 && armor == that.armor && miss == that.miss
+                && lifeRegeneration == that.lifeRegeneration && critResistance == that.critResistance;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result;
+        long temp;
+        result = maxHp;
+        result = 31 * result + hp;
+        temp = Double.doubleToLongBits(physicalResistance);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(magicResistance);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + armor;
+        result = 31 * result + miss;
+        result = 31 * result + lifeRegeneration;
+        result = 31 * result + critResistance;
+        return result;
     }
 }

@@ -1,5 +1,7 @@
 package com.words.unit.component;
 
+import java.util.Objects;
+
 /**
  * 单位的攻击组件.
  *
@@ -240,5 +242,37 @@ public class UnitAttack
                 ", mana=" + mana +
                 ", manaRecovery=" + manaRecovery +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o)
+        {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass())
+        {
+            return false;
+        }
+        UnitAttack that = (UnitAttack) o;
+        return physicalAttack == that.physicalAttack && magicAttack == that.magicAttack && crit == that.crit
+                && Double.compare(that.critsEffect, critsEffect) == 0 && hit == that.hit && maxMana == that.maxMana
+                && mana == that.mana && manaRecovery == that.manaRecovery;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = physicalAttack;
+        result = 31 * result + magicAttack;
+        result = 31 * result + crit;
+        long temp = Double.doubleToLongBits(critsEffect);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + hit;
+        result = 31 * result + maxMana;
+        result = 31 * result + mana;
+        result = 31 * result + manaRecovery;
+        return result;
     }
 }

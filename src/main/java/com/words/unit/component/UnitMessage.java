@@ -2,6 +2,8 @@ package com.words.unit.component;
 
 import org.slf4j.LoggerFactory;
 
+import java.util.Objects;
+
 import static java.util.Objects.requireNonNull;
 
 /**
@@ -264,5 +266,56 @@ public class UnitMessage
             LOGGER.trace("第{}次迭代, 现在等级为{}, 升级下一级所需为{}", count, level, upgradeNeedXp);
         }
         return count;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "UnitMessage{" +
+                "name='" + name + '\'' +
+                ", camp=" + camp +
+                ", level=" + level +
+                ", speed=" + speed +
+                ", value=" + value +
+                ", cash=" + cash +
+                ", xp=" + xp +
+                ", upgradeNeedXp=" + upgradeNeedXp +
+                ", upgradeNeedXpIncrease=" + upgradeNeedXpIncrease +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o)
+        {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass())
+        {
+            return false;
+        }
+        UnitMessage that = (UnitMessage) o;
+        return level == that.level && speed == that.speed && value == that.value && cash == that.cash && xp == that.xp
+                && upgradeNeedXp == that.upgradeNeedXp && Double.compare(that.upgradeNeedXpIncrease, upgradeNeedXpIncrease) == 0
+                && name.equals(that.name) && camp == that.camp;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result;
+        long temp;
+        result = name.hashCode();
+        result = 31 * result + camp.hashCode();
+        result = 31 * result + level;
+        result = 31 * result + speed;
+        result = 31 * result + value;
+        result = 31 * result + cash;
+        result = 31 * result + xp;
+        result = 31 * result + upgradeNeedXp;
+        temp = Double.doubleToLongBits(upgradeNeedXpIncrease);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
     }
 }
