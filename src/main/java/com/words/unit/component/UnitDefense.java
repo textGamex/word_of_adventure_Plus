@@ -78,7 +78,7 @@ public class UnitDefense
     }
 
     /**
-     * @return 返回单位的闪避
+     * @return 返回单位的护甲值
      */
     public int getArmor()
     {

@@ -20,4 +20,12 @@ class UnitTest
         assertNotEquals(null, object.message());
         assertNotEquals(null, object.buff());
     }
+
+    @Test
+    void testBuilderError()
+    {
+        assertThrows(NullPointerException.class, () -> new Unit.Builder().message(null).build());
+        assertThrows(NullPointerException.class, () -> new Unit.Builder().attack(null).build());
+        assertThrows(NullPointerException.class, () -> new Unit.Builder().defense(null).build());
+    }
 }
