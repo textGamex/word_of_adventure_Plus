@@ -1,10 +1,12 @@
 package com.words.statistics;
 
+import java.util.Arrays;
+
 /**
  * 游戏的统计组件.
  *
  * @author 留恋千年
- * @version 1.0.0
+ * @version 1.0.1
  * @since 2021-8-1
  */
 public class UnitStatistics
@@ -77,7 +79,7 @@ public class UnitStatistics
 
     public void killIncrement()
     {
-        totalAttack++;
+        totalKill++;
     }
 
     public void attackNumberIncrement()
@@ -118,26 +120,9 @@ public class UnitStatistics
         {
             return false;
         }
-
         UnitStatistics that = (UnitStatistics) o;
-
-        if (totalKill != that.totalKill)
-        {
-            return false;
-        }
-        if (totalRound != that.totalRound)
-        {
-            return false;
-        }
-        if (totalAttack != that.totalAttack)
-        {
-            return false;
-        }
-        if (totalHarm != that.totalHarm)
-        {
-            return false;
-        }
-        return totalVictory == that.totalVictory;
+        return totalKill == that.totalKill && totalRound == that.totalRound && totalAttack == that.totalAttack
+                && totalHarm == that.totalHarm && totalVictory == that.totalVictory;
     }
 
     @Override
